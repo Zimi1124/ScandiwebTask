@@ -1,11 +1,10 @@
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
---
 -- Host: localhost
--- Czas generowania: 03 Lut 2023, 19:32
--- Wersja serwera: 10.4.17-MariaDB
--- Wersja PHP: 7.4.33
+-- Generation Time: 3 Feb 2023, 19:32
+-- Server version: 10.4.17-MariaDB
+-- PHP version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `jakubdur_scandiweb`
---
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `product`
+--Table structure for table 'product'
 --
 
 CREATE TABLE `product` (
@@ -37,7 +30,7 @@ CREATE TABLE `product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Zrzut danych tabeli `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `sku`, `name`, `price`, `type`, `attribute`) VALUES
@@ -59,21 +52,21 @@ INSERT INTO `product` (`id`, `sku`, `name`, `price`, `type`, `attribute`) VALUES
 
 
 --
--- Indeksy dla zrzutów tabel
+-- Indexes for table dumps
 --
 
 --
--- Indeksy dla tabeli `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
     ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
