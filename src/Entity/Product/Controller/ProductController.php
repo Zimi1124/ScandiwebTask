@@ -73,7 +73,7 @@ class productController
 
     function deleteProduct(string $sku)
     {
-        $sql = "DELETE FROM product WHERE sku ='" . $sku . "'";
+        $sql = "DELETE FROM product WHERE sku ='$sku'";
         $connection = $this->con->openConn();
         $connection->query($sql);
         $this->con->closeConn($connection);

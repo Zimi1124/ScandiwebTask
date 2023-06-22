@@ -12,9 +12,9 @@ class Connection
     public function __construct()
     {
         $this->servername = "localhost";
-        $this->username = "id20866147_admin";
+        $this->username = "id20935138_admin";
         $this->password = "Password1!";
-        $this->db = "id20866147_mysql";
+        $this->db = "id20935138_mysql";
     }
     function openConn()
     {

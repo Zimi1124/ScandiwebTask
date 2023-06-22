@@ -31,7 +31,7 @@ $products = $productController->selectAllProducts();
             </div>
             <div class="nav__buttons">
                 <button id="add-product-btn">ADD</button>
-                <button id="delete-product-btn">MASS DELETE</button>
+                <button id="delete-product-btn" type="submit" name="delete" form="deleteForm">MASS DELETE</button>
             </div>
         </nav>
         <hr class="horizontal-line container">
@@ -39,7 +39,7 @@ $products = $productController->selectAllProducts();
 
     <!-- -------------- product grid ----------------- -->
     <main class="main container">
-        <form id="delete_form" action="src/Entity/Product/Controller/delete-products.php" method="post">
+        <form id="delete_form" action="php/delete.php"  method="POST">
             <div class="list__grid">
                 <?php ProductRender::renderProducts($products); ?>
             </div>
@@ -50,7 +50,9 @@ $products = $productController->selectAllProducts();
     <?php include 'templates/footer.php' ?>
 
     <!-- ============== JS scripts ============== -->
+    
     <script src="public/js/productList.js"></script>
+
 </body>
 
 </html>

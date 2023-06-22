@@ -28,7 +28,7 @@ class ProductRender
 
         return <<<HTML
             <div class="list__item">
-                <input type="checkbox" class="delete-checkbox" name="ids[]" value="{$sku}">
+                <input type="checkbox" class="delete-checkbox" name="ids[]" value="{$sku}" >
                 <div class="list__item-content">
                     <div class="list__item-sku">{$sku}</div>
                     <div class="list__item-name">{$name}</div>

@@ -1,33 +1,48 @@
-/*==================== BUTTONS OPERATION ====================*/
 // Add
 const add_button = document.getElementById('add-product-btn');
 add_button.addEventListener('click', function () {
-    window.location.pathname = '/add-product'
+    window.location.pathname = '/add-product';
 });
 
 // Delete
 const delete_button = document.getElementById('delete-product-btn');
 delete_button.addEventListener('click', function () {
     if (anyIsChecked()) {
-        removaAnimation();
+        removeAnimation();
         setTimeout(function () {
             submitRemovalForm();
         }, 1000);
     } else {
-        alert('Select at least one product for delete.');
+        alert('Select at least one product for deletion.');
     }
-
 });
 
-/*==================== REMOVAL PRODUCTS ====================*/
 function submitRemovalForm() {
-    document.getElementById("delete_form").submit();
+    const product_ids = getCheckedProductIds();
+    fetch('/src/Entity/Product/Controller/delete-products.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product_ids)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Handle success
+            // You can perform any necessary actions on success
+            window.location.reload(); // Refresh the page after deleting the product(s)
+        } else {
+            // Handle error
+            // You can display an error message or perform any necessary actions on error
+            console.error('Error deleting product(s).');
+        }
+    });
 }
 
-function removaAnimation() {
-    var items = document.querySelectorAll('.list__item');
+function removeAnimation() {
+    const items = document.querySelectorAll('.list__item');
     items.forEach(item => {
-        const checkbox = item.querySelector(".delete-checkbox");
+        const checkbox = item.querySelector('.delete-checkbox');
         if (checkbox.checked) {
             item.style.opacity = 0;
             item.style.transform = 'scale(.9)';
@@ -36,16 +51,15 @@ function removaAnimation() {
 }
 
 function anyIsChecked() {
-    const removalForm = document.getElementById('delete_form');
-    const checkboxes = removalForm.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    return checkboxes.length > 0;
+}
 
-    let anyChecked = false;
-
+function getCheckedProductIds() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    const ids = [];
     checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            anyChecked = true;
-        }
+        ids.push(checkbox.value);
     });
-
-    return anyChecked;
+    return ids;
 }
